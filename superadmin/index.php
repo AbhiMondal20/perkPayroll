@@ -1,10 +1,6 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 session_start();
-
 require_once __DIR__ . '/vendor/autoload.php';
-
 use Dotenv\Dotenv;
 
 // ✅ .env is inside superadmin folder
@@ -67,13 +63,13 @@ if (isset($_POST['login'])) {
 <meta charset="utf-8">
 <meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rhythm E-Clinic Solutions - Super Admin Login</title>
+<title>Rhythm Payroll  - Super Admin Login</title>
 
 <!-- ✅ Because file is /superadmin/index.php -->
-<link href="../opd/admin/css/vendors_css.css" rel="stylesheet">
-<link href="../opd/admin/css/style.css" rel="stylesheet">
+<link href="../payroll/admin/assets/css/vendors_css.css" rel="stylesheet">
+<link href="../payroll/admin/assets/css/style.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-<link href="../opd/images/favicon.ico" rel="icon">
+<link href="../payroll/admin/assets/images/favicon.ico" rel="icon">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
@@ -108,7 +104,7 @@ body { display:flex; justify-content:center; align-items:center; min-height:100v
 <div id="particles-js"></div>
 
 <div class="login-card">
-    <img src="../opd/images/logo-letter.png" class="login-logo" alt="Logo">
+    <img src="../payroll/admin/assets/images/logo-letter.png" class="login-logo" alt="Logo">
     <div class="text-logo">Rhythm</div>
 
     <form method="POST" autocomplete="off">
@@ -184,7 +180,7 @@ if (isset($_SESSION['success'])) {
 }
 ?>
 
-<script src="../opd/admin/js/vendors.min.js"></script>
-<script src="../opd/admin/js/netCheck.js"></script>
+<script src="../payroll/admin/assets/js/vendors.min.js"></script>
+<script src="../payroll/admin/assets/js/netCheck.js"></script>
 </body>
 </html>
