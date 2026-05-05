@@ -1,16 +1,10 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
 if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
-    echo "<script>location.href='../../index';</script>";
+    echo "<script>location.href='../index';</script>";
     exit;
 }
 date_default_timezone_set("Asia/Kolkata");
-
-/**
- * MASTER DB (app_master): users, clients, user_access, etc.
- * CLIENT DB (client-wise): module tables (opd/crm/payroll etc.)
- */
-
 require_once '../db_conn.php';
 function e($s) {
     return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
@@ -26,18 +20,18 @@ function e($s) {
     <meta name="keywords" content="E-Clinic Solutions, Abhitechbot, Healthcare Software, Patient Management System, Online Appointment Booking, Diagnostic Software, Clinic Management, Healthcare IT, Medical Software, Digital Healthcare">
     <meta name="author" content="Abhitechbot">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../opd/admin/images/favicon.ico">
-    <title>Rhythm E-Clinic Solutions</title>
+    <link rel="icon" href="../payroll/admin/assets/images/favicon.ico">
+    <title>Rhythm Payroll App</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../opd/admin/css/vendors_css.css">
-    <link rel="stylesheet" href="../opd/admin/css/style.css">
-    <link rel="stylesheet" href="../opd/admin/css/header.css">
-    <link rel="stylesheet" href="../opd/admin/css/skin_color.css">
+    <link rel="stylesheet" href="../payroll/admin/assets/css/vendors_css.css">
+    <link rel="stylesheet" href="../payroll/admin/assets/css/style.css">
+    <link rel="stylesheet" href="../payroll/admin/assets/css/header.css">
+    <link rel="stylesheet" href="../payroll/admin/assets/css/skin_color.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <!-- JS -->
-    <script src="../opd/admin/js/jquery-3.7.1.js"></script>
-    <script src="../opd/admin/js/sweetalert.min.js"></script>
+    <script src="../payroll/admin/assets/js/jquery-3.7.1.js"></script>
+    <script src="../payroll/admin/assets/js/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -47,8 +41,8 @@ function e($s) {
     <!-- InputMask -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Flatpickr -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> -->
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -61,10 +55,10 @@ function e($s) {
             <a href="index" class="logo">
                 <div class="logo-lg">
                     <span class="light-logo">
-                        <img src="../opd/images/logo-letter.png" alt="logo">
+                        <img src="../payroll/admin/assets/images/logo-letter.png" alt="logo">
                     </span>
                     <span class="dark-logo">
-                        <img src="../opd/images/logo-letter.png" alt="logo">
+                        <img src="../payroll/admin/assets/images/logo-letter.png" alt="logo">
                     </span>
                 </div>
             </a>
@@ -97,7 +91,6 @@ function e($s) {
 
             <div class="navbar-custom-menu r-side">
                 <ul class="nav navbar-nav">
-
                     <!-- Main Menu -->
                     <li class="btn-group nav-item d-lg-inline-flex d-none">
                         <a href="#" class="waves-effect waves-light push-btn btn btn-primary-light"
@@ -105,7 +98,6 @@ function e($s) {
                             <i class="fa-solid fa-layer-group"></i>
                         </a>
                     </li>
-
                     <!-- Full Screen -->
                     <li class="btn-group nav-item d-lg-inline-flex d-none">
                         <a href="#" data-provide="fullscreen"
@@ -171,7 +163,7 @@ function e($s) {
                                     Super Admin
                                     </p>
                                 </div>
-                                <img src="../opd/admin/assets/images/avatar/avatar-1.png"
+                                <img src="../payroll/admin/assets/images/avatar/avatar-1.png"
                                      class="avatar rounded-10 bg-primary-light h-40 w-40" alt="" />
                             </div>
                         </a>
@@ -205,14 +197,14 @@ function e($s) {
                     <div class="app-grid">                     
                         <a href="index" class="app-item">
                             <div class="app-icon">
-                                <img src="../opd/assets/images/main-menu/dashboard.png" alt="dashboard" class="icon-invert">
+                                <img src="../payroll/admin/assets/images/main-menu/dashboard.png" alt="dashboard" class="icon-invert">
                             </div>
                             <div class="app-title">Dashboard</div>
                         </a>          
 
                         <a href="#" class="app-item">
                             <div class="app-icon">
-                                <img src="../opd/assets/images/main-menu/opd.png" alt="Payroll">
+                                <img src="../payroll/admin/assets/images/main-menu/payroll.png" alt="Payroll">
                             </div>
                             <div class="app-title">Payroll</div>
                         </a>                     
@@ -231,7 +223,7 @@ function e($s) {
                 <a href="tel:+918101202074" class="d-flex align-items-center">
                     <div class="bg-danger rounded10 h-50 w-50 l-h-50 text-center me-15">
                         <i data-feather="mic"></i>
-                        <img src="../images/emergency.png" height="40px">
+                        <img src="../payroll/admin/assets/images/emergency.png" height="40px">
                     </div>
                     <h4 class="mb-0">Emergency<br>help</h4>
                 </a>
@@ -277,9 +269,6 @@ function e($s) {
         </section>
     </aside>
 
-    <!-- Notification Sound -->
-    <audio id="notif-sound" src="https://rhythm.abhitechbot.in/opd/images/notify.mp3" preload="auto"></audio>
-    <div id="toast-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 99999;"></div>
 
     <script>
         if (typeof feather !== "undefined") feather.replace();
@@ -291,7 +280,7 @@ function e($s) {
             searchInput.addEventListener('keyup', function() {
                 let query = this.value.trim();
                 if (query.length > 1) {
-                    fetch('load/search_suggestion.php?q=' + encodeURIComponent(query))
+                    fetch('../payroll/admin/load/search_suggestion.php?q=' + encodeURIComponent(query))
                         .then(r => r.text())
                         .then(html => {
                             suggestionBox.innerHTML = html;
